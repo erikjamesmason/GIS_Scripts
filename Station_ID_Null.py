@@ -4,7 +4,7 @@
 # Purpose: Update Traffic Station ID's to Original ID IF NULL
 # Inputs: Hosted Feature Layer(Statewide_Traffic_Collector_Master) or comparable
 # Outputs: UpdateCursor updates input Hosted Feature Layer
-
+# Master
 ############################################################################################
 #import necessary modules
 import arcpy
@@ -13,20 +13,17 @@ import os
 
 # assign variables to different context for GIS
 gis = GIS("Pro")
-fc = gis.content.get("bad175efcff24d699e94be1e25f1b4f3")
+fc = gis.content.get("")
 
 # begin main function
 def main():
 
     # set environment
-    arcpy.env.workspace = r'C:\Users\ejmason\Documents\
-        ArcGIS\Projects\
-            Statewide Traffic Stations Project Update 2020\
-                Default.gdb'
+    arcpy.env.workspace = r'...\Default.gdb'
 
     # set folder path and "file" name # this seemed to work better with using Editor session
-    folderPath = r"C:\Users\ejmason\Documents\ArcGIS\Projects\Statewide Traffic Stations Project Update 2020"
-    envName = "Default.gdb"
+    folderPath = r""
+    envName = ".../Default.gdb"
 
     # establish an Editing Session
     edit = arcpy.da.Editor(os.path.join(folderPath, envName))
@@ -34,11 +31,11 @@ def main():
     edit.startOperation()
 
     # Establish table for script to target # for local or hosted
-    ftable = r'https://services.arcgis.com/r4A0V7UzH9fcLVvv/arcgis/rest/services/Statewide_Traffic_Stations/FeatureServer/0'
+    ftable = r'.../FeatureServer/0'
 
     # if using something local, use this
     #
-    # ftable = r'C:\Users\ejmason\Documents\ArcGIS\Projects\Statewide Traffic Stations Project Update 2020\Default.gdb\Statewide_Traffic_Collector_Master_CopyFeatures'
+    # ftable = r'...\Default.gdb\...Features'
     #
 
     # fields for cursor to iterate through
